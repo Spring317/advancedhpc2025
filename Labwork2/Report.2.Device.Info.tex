@@ -1,0 +1,210 @@
+\documentclass[hidelinks]{report}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{placeins}
+\usepackage{tikz}
+\usetikzlibrary{automata, arrows, positioning}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor,graphicx}
+\setcounter{secnumdepth}{0}
+\usepackage{titlesec}
+\usepackage[left=1.5in,top=1in,bottom=1in,right=1in]{geometry}
+\usepackage{rotating}
+\usepackage{subcaption}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{mathptmx}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{adjustbox}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\setcounter{tocdepth}{4}
+\usepackage{amsfonts}
+\usepackage{fvextra}
+
+
+\DefineVerbatimEnvironment{MyVerbatim}{Verbatim}{breaklines=true}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\newcommand{\mynote}[2]{\fbox{\bfseries\sffamily\scriptsize{#1}} {\small\textsf{\emph{#2}}}}
+
+\newcommand{\hieplnc}[1]{\textcolor{red}{\mynote{hieplnc}{#1}}}
+
+\newcommand{\sontg}[1]{\textcolor{blue}{\mynote{sontg}{#1}}}
+
+\definecolor{blue}{RGB}{31,56,100}
+
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+\makeatletter
+\def\@makechapterhead#1{%
+  {
+  \parindent \z@ \raggedright \normalfont   
+    
+    \ifnum \c@secnumdepth >\m@ne
+        \huge\bfseries \thechapter.\ % <-- Chapter # (without "Chapter")
+    \fi
+    \interlinepenalty\@M
+    #1\par\nobreak% <------------------ Chapter title
+    \vskip 40\p@% <------------------ Space between chapter title and first paragraph
+  }}
+\makeatother
+
+
+% Redefine the \thesection and \thesubsection representations
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+
+% Define a new counter for subsections
+\newcounter{subsecindex}[section]
+\renewcommand{\thesubsecindex}{\thesubsection%
+  \ifnum\value{subsecindex}>0
+    .\arabic{subsecindex}%
+  \fi
+}
+
+% Redefine the \section command to include the index
+\let\oldsection\section
+\renewcommand{\section}[1]{%
+  \setcounter{subsecindex}{0} % Reset subsection counter for each section
+  \refstepcounter{section}%
+  \oldsection{\thesection\hspace{0.5em}#1}%
+}
+
+% Redefine the \subsection command to include the index
+\let\oldsubsection\subsection
+\renewcommand{\subsection}[1]{%
+  \refstepcounter{subsection}%
+  \oldsubsection{\thesubsecindex\hspace{0.5em}#1}%
+}
+
+% Redefine the \subsubsection command to include the index
+\let\oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}[1]{%
+  \refstepcounter{subsubsection}%
+  \oldsubsubsection{\thesubsecindex\hspace{0.5em}#1}%
+}
+
+\titleformat{\section}
+  {\normalfont\LARGE\bfseries} % Adjust \Large to any size you prefer
+  {\thesection}{3em}{}
+\titleformat{\subsection}
+  {\normalfont\Large\bfseries} % Adjust \Large to any size you prefer
+  {\thesubsection}{3em}{}
+\titleformat{\subsubsection}
+  {\normalfont\Large\bfseries} % Adjust \Large to any size you prefer
+  {\thesubsubsection}{3em}{}
+
+\begin{document}
+\pagenumbering{gobble}
+
+\pdfbookmark[0]{Main Title}{maintitle}
+\begin{titlepage}
+    \begin{tikzpicture}[remember picture,overlay,inner sep=0,outer sep=0]
+        \draw[black!70!black,line width=1.5pt]
+            ([xshift=-0.65in,yshift=-1cm]current page.north east) coordinate (A) -- % Adjusted x-shift and y-shift
+            ([xshift=0.65in,yshift=-1cm]current page.north west) coordinate (B) -- % Adjusted x-shift and y-shift
+            ([xshift=0.65in,yshift=1cm]current page.south west) coordinate (C) -- % Adjusted x-shift and y-shift
+            ([xshift=-0.65in,yshift=1cm]current page.south east) -- % Adjusted x-shift
+            cycle;
+    \end{tikzpicture}
+
+    \begin{center}
+    \begin{figure}
+        \centering
+        \huge \uppercase{university of science and technology of hanoi} \\ [1.5 cm]
+    
+        \filleft
+        \includegraphics[width=0.7\linewidth]{images/usth.png}
+    \end{figure}
+    
+    \textsc{\Large }\\[1cm]
+    {\huge \bfseries \uppercase{LABWORK'S REPORT}}\\[1cm]
+
+    {\large \bfseries 2440053 - Dao Xuan Quy  } \\ [0.5cm]
+    {\huge \bfseries \uppercase{Advance programming for HPC}}\\[1cm]
+    
+    % Title
+    \rule{\linewidth}{0.3mm} \\[0.4cm]
+    { \Huge \bfseries\color{blue}  Labwork 2: Get to know your GPU}
+    \rule{\linewidth}{0.3mm} \\[0.7cm]
+    
+    \large Academic Year: 2024-2026
+    \end{center}
+
+\end{titlepage}
+
+\newpage
+\pagenumbering{roman}
+\noindent \Large \tableofcontents
+
+\newpage
+\listoffigures
+
+\newpage
+\listoftables
+
+\thispagestyle{empty}
+\newpage
+
+\chapter{Introduction}
+\pagenumbering{arabic}
+
+\hspace{5mm} In this labwork I run some simple stupid command to get to know my GPU better (I guess)
+ 
+\chapter{Implementation \& Results}
+\section{Get GPU's Name and ID}
+For the model id and name, use the command: \texttt{numba.cuda.detect()}:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{IMG_0080.jpeg}
+    \caption{ID and Name of the GPUs}
+    \label{fig:placeholder}
+\end{figure}
+
+\section{Multiprocessors and Multicores count}
+For multiprocessor count, the command is
+
+\texttt{cuda.get\_current\_device().MULTIPROCESSOR\_COUNT}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\linewidth]{IMG_0081.jpeg}
+    \caption{Multiprocessor's count}
+    \label{fig:placeholder}
+\end{figure}
+
+For multicore count, the formula is written as follow:
+
+
+$mutilcore\_count = (MAX\_THREADS\_PER\_MULTI\_PROCESSOR / WARP\_SIZE) * (MAX\_THREADS\_PER\_MULTI\_PROCESSOR / MAX\_THREADS\_PER\_BLOCK) * MULTIPROCESSOR\_COUNT$
+
+\section{Memory size}
+
+Simple as that, the command for memory size is: 
+
+\texttt{numba.cuda.current\_context().get\_memory\_info()}
+This function returns the free memory of the GPU and the total memory of the GPU.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{IMG_0084.jpeg}
+    \caption{Memory infomation}
+    \label{fig:placeholder}
+\end{figure}
+
+\chapter{Conclusion}
+In this lab, I tried some functions to get to no my GPU better. 
+\end{document}
