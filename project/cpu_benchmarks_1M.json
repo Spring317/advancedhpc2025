@@ -1,0 +1,66 @@
+{
+  "n_elements": 1000000,
+  "timestamp": "2025-10-25T09:04:46.982355",
+  "cpu_benchmarks": {
+    "exclusive_scan": {
+      "avg_time_ms": 263.2535113953054,
+      "std_time_ms": 8.380704252612963,
+      "throughput_M_per_sec": 3.798619796939328
+    },
+    "segmented_scan_sum": {
+      "avg_time_ms": 234.869857999729,
+      "std_time_ms": 10.490491413239287,
+      "throughput_M_per_sec": 4.257677032363829
+    },
+    "segmented_scan_max": {
+      "avg_time_ms": 296.0285804059822,
+      "std_time_ms": 2.2837807406201747,
+      "throughput_M_per_sec": 3.378052209109576
+    },
+    "segmented_reduce_sum": {
+      "avg_time_ms": 279.6199109987356,
+      "std_time_ms": 5.525159802849257,
+      "throughput_M_per_sec": 3.57628323543999
+    },
+    "segmented_reduce_max": {
+      "avg_time_ms": 337.42828619433567,
+      "std_time_ms": 8.426930961865585,
+      "throughput_M_per_sec": 2.963592682991811
+    },
+    "segmented_reduce_min": {
+      "avg_time_ms": 334.7278867906425,
+      "std_time_ms": 2.7096621443464017,
+      "throughput_M_per_sec": 2.987501309161778
+    },
+    "cumulative_returns": {
+      "avg_time_ms": 793.1718494044617,
+      "std_time_ms": 10.634667886406245,
+      "throughput_M_per_sec": 1.2607608310239846
+    },
+    "simple_moving_average": {
+      "avg_time_ms": 1765.6846740050241,
+      "std_time_ms": 24.23370319542495,
+      "throughput_M_per_sec": 0.5663525400216248
+    },
+    "rolling_std": {
+      "avg_time_ms": 56.679221196100116,
+      "std_time_ms": 0.6518286575684876,
+      "throughput_M_per_sec": 17.643149974488466
+    },
+    "max_drawdown": {
+      "avg_time_ms": 305.85074480623007,
+      "std_time_ms": 10.329406516991027,
+      "throughput_M_per_sec": 3.2695686277747797
+    },
+    "portfolio_value": {
+      "avg_time_ms": 0.022587395505979657,
+      "std_time_ms": 0.00594557873519519,
+      "throughput_M_per_sec": 44272.47930091213
+    },
+    "high_water_mark": {
+      "avg_time_ms": 3.158544807229191,
+      "std_time_ms": 0.09056938137854158,
+      "throughput_M_per_sec": 316.60149246932554
+    }
+  }
+}
